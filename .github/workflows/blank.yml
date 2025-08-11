@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IronVeil - Server Minecraft Medievale</title>
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: 'Georgia', serif;
+        margin: 0;
+        background-color: #5c5c5c;
+        color: #e0e0e0;
+    }
+    /* Animazione iniziale logo */
+    #intro {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: #1a1a1a;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+    #intro img {
+        width: 0;
+        animation: grow 2s ease forwards;
+    }
+    @keyframes grow {
+        from { width: 0; opacity: 0; }
+        to { width: 250px; opacity: 1; }
+    }
+
+    header {
+        background: linear-gradient(90deg, #4d4d4d, #1a1a1a);
+        padding: 1rem;
+        text-align: center;
+        border-bottom: 3px solid #777;
+    }
+    header h1 {
+        font-family: 'MedievalSharp', cursive;
+        font-size: 3rem;
+        color: #d4af37;
+        margin: 0;
+    }
+    nav {
+        display: flex;
+        justify-content: center;
+        background-color: #2b2b2b;
+        padding: 0.5rem;
+    }
+    nav button {
+        background: none;
+        border: none;
+        color: #ccc;
+        font-size: 1rem;
+        margin: 0 10px;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+    nav button:hover, nav button.active {
+        color: #d4af37;
+        border-bottom: 2px solid #d4af37;
+    }
+    .tab-content {
+        display: none;
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background-color: rgba(0,0,0,0.25);
+        border: 2px solid black;
+        border-radius: 10px;
+        box-shadow: 0 0 20px #000;
+    }
+    .tab-content.active {
+        display: block;
+    }
+    .scroll-box {
+        max-height: 500px;
+        overflow-y: auto;
+        padding: 1rem;
+    }
+    h2 {
+        font-family: 'MedievalSharp', cursive;
+        color: #d4af37;
+    }
+</style>
+</head>
+<body>
+
+<!-- Animazione iniziale -->
+<div id="intro">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Shield_icon.svg" alt="IronVeil Logo">
+</div>
+
+<header>
+    <h1>IronVeil</h1>
+    <p>Server Minecraft Medievale & Discord</p>
+</header>
+
+<nav>
+    <button class="tab-btn active" data-tab="intro-page">Introduzione</button>
+    <button class="tab-btn" data-tab="regole">Regole</button>
+    <button class="tab-btn" data-tab="store">Store</button>
+    <button class="tab-btn" data-tab="candidature">Candidature</button>
+    <button class="tab-btn" data-tab="media">Media</button>
+</nav>
+
+<section id="intro-page" class="tab-content active">
+    <h2>Storia, Stile & Community</h2>
+    <div class="scroll-box">
+        <!-- Testo lungo almeno 120 righe -->
+        <p>
+        Benvenuto in IronVeil, un regno forgiato nella pietra e nella gloria...
+        </p>
+        <!-- Qui inserirai una descrizione lunghissima del server, stile medievale, con dettagli su regole e community Discord -->
+        <!-- Puoi copiare e incollare paragrafi fino a superare le 120 righe -->
+    </div>
+</section>
+
+<section id="regole" class="tab-content">
+    <h2>Regole</h2>
+    <p>Qui inserirai le regole in futuro...</p>
+</section>
+
+<section id="store" class="tab-content">
+    <h2>Store</h2>
+    <p>Pagina dello store. Qui aggiungerai VIP, pacchetti e costi.</p>
+</section>
+
+<section id="candidature" class="tab-content">
+    <h2>Candidature</h2>
+    <p>Compila il modulo per entrare nello staff o partecipare a ruoli speciali:</p>
+    <ul>
+        <li>Nome in gioco (IGN)</li>
+        <li>Età</li>
+        <li>Esperienze precedenti</li>
+        <li>Perché vuoi entrare nello staff</li>
+        <li>Orari di disponibilità</li>
+    </ul>
+</section>
+
+<section id="media" class="tab-content">
+    <h2>Media</h2>
+    <p>Spazio per immagini, video e contenuti della community.</p>
+</section>
+
+<script>
+    // Gestione tabs
+    const buttons = document.querySelectorAll('.tab-btn');
+    const contents = document.querySelectorAll('.tab-content');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            buttons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            contents.forEach(c => c.classList.remove('active'));
+            document.getElementById(btn.dataset.tab).classList.add('active');
+        });
+    });
+
+    // Rimuove intro animazione dopo 2.5s
+    setTimeout(() => {
+        document.getElementById('intro').style.display = 'none';
+    }, 2500);
+</script>
+
+</body>
+</html>
